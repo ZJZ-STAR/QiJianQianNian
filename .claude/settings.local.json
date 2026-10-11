@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(powershell -Command 'Get-NetTCPConnection -LocalPort 5173 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1 | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }')",
+      "Bash(py --version)",
+      "Bash(pip --version)",
+      "Bash(conda --version)",
+      "Bash(nvidia-smi)",
+      "Bash(wmic cpu *)",
+      "Bash(wmic computersystem *)",
+      "Bash(python -c \"import torch; print\\(torch.__version__, 'cuda:', torch.cuda.is_available\\(\\)\\)\")",
+      "Bash(powershell -Command \"Get-CimInstance Win32_VideoController | Select-Object Name,AdapterRAM,DriverVersion | Format-List\")",
+      "Bash(python -c \"import sys; print\\(sys.executable\\); print\\(sys.version\\)\")",
+      "Bash(pip index *)",
+      "Bash(conda create *)",
+      "Bash(\"D:/SoftWare/Anaconda/envs/qjqn/python.exe\" -m pip install --no-warn-script-location torch torchvision --index-url https://download.pytorch.org/whl/cpu)",
+      "Bash(\"D:/SoftWare/Anaconda/envs/qjqn/python.exe\" -m pip install --no-warn-script-location \"transformers==4.35.0\" accelerate rembg \"trimesh==4.0.5\" einops omegaconf huggingface_hub Pillow scikit-image fastapi \"uvicorn[standard]\" python-multipart imageio natsort pygltflib opencv-python)",
+      "Bash(\"D:/SoftWare/Anaconda/envs/qjqn/python.exe\" -c \"import torch; print\\('torch', torch.__version__\\)\")",
+      "Bash(\"D:/SoftWare/Anaconda/envs/qjqn/python.exe\" -c \"import transformers, trimesh, rembg, fastapi, skimage, omegaconf, einops; print\\('ALL OK', transformers.__version__, trimesh.__version__\\)\")",
+      "Bash(\"D:/SoftWare/Anaconda/envs/qjqn/python.exe\" -m pip install --no-warn-script-location onnxruntime)",
+      "Bash(\"D:/SoftWare/Anaconda/envs/qjqn/python.exe\" -c \"import torch, transformers, trimesh, rembg, skimage, omegaconf, einops, fastapi, onnxruntime; print\\('IMPORTS OK | torch', torch.__version__, '| trimesh', trimesh.__version__, '| transformers', transformers.__version__\\)\")",
+      "Bash(\"D:/SoftWare/Anaconda/envs/qjqn/python.exe\" -c \"import sys; sys.path.insert\\(0, 'TripoSR'\\); from tsr.system import TSR; print\\('TSR import OK'\\)\")",
+      "Bash(D:/SoftWare/Anaconda/envs/qjqn/python.exe -c ' *)",
+      "Bash(\"D:/SoftWare/Anaconda/envs/qjqn/python.exe\" generate_test_image.py)",
+      "Bash(\"D:/SoftWare/Anaconda/envs/qjqn/python.exe\" test_pipeline.py)",
+      "Bash(grep -viE \"FutureWarning|_register_pytree|warnings.warn|symlinks|Developer Mode|administrator|dev mode|enable-your|docs.microsoft|^\\\\s*$\")",
+      "Bash(\"D:/SoftWare/Anaconda/envs/qjqn/python.exe\" -m pip install --no-warn-script-location \"huggingface_hub==0.24.7\")",
+      "Bash(\"D:/SoftWare/Anaconda/envs/qjqn/python.exe\" -m pip install --no-warn-script-location \"transformers==4.44.2\")",
+      "Bash(grep -viE \"FutureWarning|_register_pytree|warnings.warn|symlink|Developer Mode|administrator|dev mode|enable-your|docs.microsoft|Downloading|^\\\\s*$|it/s\\\\]\")",
+      "Bash(powershell -Command 'Get-NetTCPConnection -LocalPort 8000 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1 | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }')"
+    ]
+  }
+}

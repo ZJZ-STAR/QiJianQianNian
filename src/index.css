@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #f7f3ea;
+  --color-ivory-deep: #ede5d3;
+  --color-paper: #fcfaf4;
+  --color-ink: #1e2a3a;
+  --color-ink-soft: #46536b;
+  --color-gold: #a98b4f;
+  --color-gold-soft: #c6a96b;
+  --color-celadon: #7c9a8e;
+  --color-blue: #3e5c76;
+
+  --font-serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  --font-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- shared component classes ---------- */
+
+.font-display {
+  font-family: var(--font-serif);
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.6rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: #fdfbf6;
+  background: linear-gradient(135deg, var(--color-gold), #8a6e3c);
+  border: 1px solid rgba(30, 42, 58, 0.15);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.btn-gold:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--color-ink);
+  background: transparent;
+  border: 1px solid rgba(30, 42, 58, 0.28);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.btn-ghost:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+.panel {
+  background: var(--color-paper);
+  border: 1px solid rgba(30, 42, 58, 0.08);
+  box-shadow: 0 1px 0 rgba(30, 42, 58, 0.03);
+}
+
+.hairline {
+  border: 0;
+  border-top: 1px solid rgba(30, 42, 58, 0.12);
+}
+
+/* thin gold vertical rule used as a decorative motif */
+.gold-rule {
+  width: 1px;
+  height: 3rem;
+  background: linear-gradient(to bottom, transparent, var(--color-gold), transparent);
+}
