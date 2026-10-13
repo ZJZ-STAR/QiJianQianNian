@@ -1,0 +1,8 @@
+numpy
+trimesh>=4.11
+scipy
+fastapi
+uvicorn
+python-multipart
+# 接口测试
+httpx

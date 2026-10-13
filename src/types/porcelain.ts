@@ -84,6 +84,27 @@ export interface ComparisonPair {
   rightId: string
   rows: ComparisonRow[]
   insight: string
+  leftLabel?: string
+  rightLabel?: string
+  leftMeasurement?: MorphologyMeasurement
+  rightMeasurement?: MorphologyMeasurement
+}
+
+export interface MorphologyMeasurement extends PorcelainParams {
+  heightBellyRatio: number
+  bellyPosition: number
+  bellyPositionLabel: string
+  shape: PorcelainShape
+  source: 'mesh' | 'profile'
+  method: string
+  unit: string
+}
+
+export interface ComparisonRequest {
+  leftId: string
+  rightId: string
+  leftModelUrl?: string
+  rightModelUrl?: string
 }
 
 export interface AIAnswer {

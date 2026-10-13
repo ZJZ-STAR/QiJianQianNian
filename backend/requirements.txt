@@ -5,7 +5,8 @@ transformers>=4.38.0
 accelerate
 rembg
 onnxruntime
-trimesh
+trimesh>=4.11
+scipy
 numpy
 Pillow
 imageio

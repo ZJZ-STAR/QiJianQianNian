@@ -170,7 +170,8 @@ function HighlightSegment({ shape, region }: { shape: PorcelainShape; region: { 
 }
 
 function GLTFModel({ url, visible = true }: { url: string; visible?: boolean }) {
-  const { scene } = useGLTF(url)
+  const { scene: original } = useGLTF(url)
+  const scene = useMemo(() => original.clone(true), [original])
   useEffect(() => {
     scene.visible = visible
     scene.traverse((obj) => {

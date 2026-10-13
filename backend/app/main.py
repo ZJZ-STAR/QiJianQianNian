@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 
 from . import config
-from .triposr_engine import reconstruct
+from .morphology_routes import router as morphology_router
 from .uncertainty import (
     build_report,
     compute_coarse_shape,
@@ -22,6 +22,7 @@ from .uncertainty import (
 )
 
 app = FastAPI(title="器见千年 · 三维重建服务")
+app.include_router(morphology_router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -53,6 +54,8 @@ def _load_model_once() -> None:
 def _run_task(task_id: str, image_bytes: bytes) -> None:
     started = time.time()
     try:
+        from .triposr_engine import reconstruct
+
         mesh = reconstruct(image_bytes)
         mesh = orient_upright(mesh)
         mesh = normalize_mesh(mesh, config.DISPLAY_HEIGHT)

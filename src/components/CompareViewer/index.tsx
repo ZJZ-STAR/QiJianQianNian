@@ -50,6 +50,8 @@ export function CompareViewer({ left, right, leftLabel, rightLabel }: CompareVie
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <ViewerCard porcelain={left} label={leftLabel}>
           <PorcelainViewer
+            key={`left-${left.id}-${left.modelUrl ?? ''}`}
+            modelUrl={left.modelUrl}
             shape={left.shape}
             glaze={left.glaze}
             viewId="left"
@@ -61,6 +63,8 @@ export function CompareViewer({ left, right, leftLabel, rightLabel }: CompareVie
         </ViewerCard>
         <ViewerCard porcelain={right} label={rightLabel}>
           <PorcelainViewer
+            key={`right-${right.id}-${right.modelUrl ?? ''}`}
+            modelUrl={right.modelUrl}
             shape={right.shape}
             glaze={right.glaze}
             viewId="right"

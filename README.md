@@ -128,6 +128,7 @@ D:\软创
 - **如何协作、三个功能怎么做**：`docs/backend-contracts.md`
 - **前端架构与重建后端**：`docs/API.md`
 - **后端安装运行**：`backend/README.md`
+- **形态对比运行、测量方法及接口**：`docs/morphology-comparison.md`
 - **源码阅读顺序**：见 `docs/API.md` 末尾（或直接看 `src/types/porcelain.ts` → `App.tsx` → 各 `pages/`）
 
 ---
@@ -138,7 +139,7 @@ D:\软创
 | --- | --- |
 | 前端 + 三维重建 | ✅ 已完成 |
 | 历史演化（时空数据 + 知识库） | `docs/backend-contracts.md` §2 |
-| 形态对比（3D 形态测量） | `docs/backend-contracts.md` §3 |
+| 形态对比（3D 形态测量） | ✅ 已实现，见 `docs/morphology-comparison.md` |
 | AI 讲解（RAG + LLM） | `docs/backend-contracts.md` §4 |
 
 各功能的**前端已就绪**，后端成员按契约实现接口、把 `src/api/*.ts` 里的 Mock 换成真实调用即可，页面无需改动。

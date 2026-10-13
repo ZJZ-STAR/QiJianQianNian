@@ -9,7 +9,7 @@
 | --- | --- | --- |
 | 三维重建 | ✅ | ✅ 已实现（TripoSR，见 `docs/API.md` 第 9 节） |
 | 历史演化 | ✅ | ❌ 待做（当前 `mock/data.ts`） |
-| 形态对比 | ✅ | ❌ 待做（当前 `mock/data.ts` 的 `comparisonPair`） |
+| 形态对比 | ✅ | ✅ 已实现轮廓 / GLB 自动测量及对比，历史参考使用现有样例轮廓 |
 | AI 讲解 | ✅ | ❌ 待做（当前 `mock/data.ts` 的 `getPartAnswer`） |
 
 **原则**：页面只通过 `src/api/*.ts` 调数据。你改 `api/*.ts` 内部实现（Mock → `request()`），
@@ -101,28 +101,22 @@
 
 ---
 
-## 3. 形态对比 —— 接口契约
+## 3. 形态对比 —— 已实现接口
 
-负责人：**成员 B**。目标：从 3D 网格自动测量形态参数 + 跨时期对比。
+负责人：**成员 B**。测量 GLB 网格或现有历史器物轮廓，统一尺度后返回参数和差异洞察。
 
 | 方法 | 路径 | 请求 | 响应 |
 | --- | --- | --- | --- |
-| POST | `/api/measure` | `{ modelUrl }` 或上传 mesh | `{height, maxBellyDiameter, mouthDiameter, footDiameter, heightBellyRatio, bellyPosition}` |
-| POST | `/api/compare` | `{ leftId, rightId }` | `{ rows: ComparisonRow[], insight, leftLabel, rightLabel }` |
+| POST | `/api/measure` | `{ modelUrl }` 或 `{ artifactId }` | `MorphologyMeasurement` |
+| POST | `/api/compare` | `{ leftId, rightId, leftModelUrl?, rightModelUrl? }` | `ComparisonPair`（含两侧测量结果、参数表、洞察及标签） |
 
-`ComparisonRow`：`{label, left, right}`（如 高度/最大腹径/口径/高腹径比）。
+`MorphologyMeasurement`：高度、最大腹径、口径、足径、高腹径比、腹部位置、归一化轮廓、数据来源与测量方法，类型定义见 `src/types/porcelain.ts`。
 
-**关键工作**：写一个网格测量模块——从 GLB/`trimesh` 提取：
-- `height`：y 轴范围；
-- `maxBellyDiameter`：最大截面直径；
-- `mouthDiameter`：顶部口沿截面直径；
-- `footDiameter`：底部圈足直径；
-- `heightBellyRatio` = height / maxBellyDiameter；
-- `bellyPosition`：最大腹径所在的相对高度（偏上/居中/偏下）。
+后端实现：`backend/app/morphology.py` + `morphology_routes.py`。历史参考目录位于 `morphology_catalog.json`，使用项目已有五件器物的示例轮廓。上传模式测量实际重建 GLB。
 
-尺寸需归一化后再对比；洞察文案可基于参数差值规则生成。**测量值必须标注为"自动提取"，非权威实测。**
+前端实现：`src/api/comparison.ts` 调用测量服务；`src/pages/Comparison/index.tsx` 提供左右选择、加载 / 错误 / 重试、参数和洞察；`CompareViewer` 支持上传 GLB。
 
-**前端替换位置**：`src/api/comparison.ts` 的 `fetchComparisonPair`（`src/pages/Comparison/index.tsx` 里的 `paramRows` 是前端算的示例，可换成后端返回）。
+运行方式、测量定义和完整接口见 [形态对比](./morphology-comparison.md)。
 
 ---
 
